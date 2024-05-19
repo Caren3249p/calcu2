@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Científica</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .display {
+            grid-column: span 4;
+            background-color: #222;
+            color: #fff;
+            font-size: 2em;
+            padding: 10px;
+            text-align: right;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            padding: 20px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .btn:active {
+            background-color: #bbb;
+        }
+
+        .btn.function {
+            background-color: #ff9500;
+            color: #fff;
+        }
+
+        .btn.function:hover {
+            background-color: #e59400;
+        }
+
+        .btn.function:active {
+            background-color: #cc8500;
+        }
+
+        .btn.clear,
+        .btn.equals {
+            background-color: #ff9500;
+            color: #fff;
+        }
+
+        .btn.clear:hover,
+        .btn.equals:hover {
+            background-color: #e59400;
+        }
+
+        .btn.clear:active,
+        .btn.equals:active {
+            background-color: #cc8500;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <!-- Primera fila -->
+        <button class="btn" onclick="clearDisplay()">C</button>
+        <button class="btn function" onclick="backspace()">←</button>
+        <button class="btn function" onclick="insert('Math.sqrt(')">√</button>
+        <button class="btn function" onclick="insert('Math.pow(')">x<sup>n</sup></button>
+        <!-- Segunda fila -->
+        <button class="btn function" onclick="insert('Math.sin(')">sin</button>
+        <button class="btn function" onclick="insert('Math.cos(')">cos</button>
+        <button class="btn function" onclick="insert('Math.tan(')">tan</button>
+        <button class="btn function" onclick="insert('Math.log10(')">log</button>
+        <!-- Tercera fila -->
+        <button class="btn function" onclick="insert('Math.asin(')">asin</button>
+        <button class="btn function" onclick="insert('Math.acos(')">acos</button>
+        <button class="btn function" onclick="insert('Math.atan(')">atan</button>
+        <button class="btn function" onclick="insert('Math.log(')">ln</button>
+        <!-- Cuarta fila -->
+        <button class="btn function" onclick="insert('Math.PI')">π</button>
+        <button class="btn function" onclick="insert('(')"> ( </button>
+        <button class="btn function" onclick="insert(')')"> ) </button>
+        <button class="btn function" onclick="insert('/')">÷</button>
+        <!-- Quinta fila -->
+        <button class="btn" onclick="insert('7')">7</button>
+        <button class="btn" onclick="insert('8')">8</button>
+        <button class="btn" onclick="insert('9')">9</button>
+        <button class="btn function" onclick="insert('*')">×</button>
+        <!-- Sexta fila -->
+        <button class="btn" onclick="insert('4')">4</button>
+        <button class="btn" onclick="insert('5')">5</button>
+        <button class="btn" onclick="insert('6')">6</button>
+        <button class="btn function" onclick="insert('-')">-</button>
+        <!-- Séptima fila -->
+        <button class="btn" onclick="insert('1')">1</button>
+        <button class="btn" onclick="insert('2')">2</button>
+        <button class="btn" onclick="insert('3')">3</button>
+        <button class="btn function" onclick="insert('+')">+</button>
+        <!-- Octava fila -->
+        <button class="btn" onclick="insert('0')">0</button>
+        <button class="btn" onclick="insert('.')">.</button>
+        <button class="btn function" onclick="insert('Math.pow(')">^</button>
+        <button class="btn" onclick="calculate()">=</button>
+    </div>
+    <script>
+        function clearDisplay() {
+            document.getElementById("display").innerText = "0";
+        }
+
+
+
